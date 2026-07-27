@@ -15,7 +15,9 @@ export const CONTACT = {
   addressFull: 'Novi Banovci, Stara Pazova, Vojvodina, Srbija',
   hours: 'Utorak – nedelja, 11–23h',
   capacity: 'Do 120 mesta',
-  instagram: 'https://www.instagram.com/',
-  facebook: 'https://www.facebook.com/',
-  tripadvisor: 'https://www.tripadvisor.com/',
+  // These three are confirmed, unlike the details above.
+  instagram: 'https://www.instagram.com/restoran_prica',
+  facebook: 'https://www.facebook.com/RestoranPrica',
+  tripadvisor:
+    'https://www.tripadvisor.com/Restaurant_Review-g13289237-d13959969-Reviews-Riblji_restoran_Prica-Novi_Banovci_Vojvodina.html',
 } as const

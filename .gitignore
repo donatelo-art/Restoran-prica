@@ -19,3 +19,7 @@ yarn-error.log*
 
 # Screenshot scratch scripts
 .shoot*.mjs
+
+# Raw photo originals — processed outputs live in public/images
+photos-inbox/*
+!photos-inbox/README.md
