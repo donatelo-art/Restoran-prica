@@ -4,11 +4,12 @@ import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { CONTACT } from '@/lib/contact'
 
+// Rooted at "/" rather than bare fragments so they also resolve from /meni.
 const navLinks = [
-  { label: 'O nama', href: '#o-nama' },
-  { label: 'Meni', href: '#meni' },
-  { label: 'Galerija', href: '#galerija' },
-  { label: 'Kontakt', href: '#kontakt' },
+  { label: 'O nama', href: '/#o-nama' },
+  { label: 'Meni', href: '/meni' },
+  { label: 'Galerija', href: '/#galerija' },
+  { label: 'Kontakt', href: '/#kontakt' },
 ]
 
 export default function Navigation() {
@@ -37,13 +38,18 @@ export default function Navigation() {
     >
       <div className="mx-auto max-w-7xl px-6 md:px-12">
         <div className="flex h-20 items-center justify-between md:h-24">
-          <a href="#" className="flex items-center gap-3">
+          {/* The restaurant's own mark is Cyrillic — Прича, Рибљи ресторан —
+              even though the printed menu itself is set in Latin. The wordmark
+              follows the mark; the rest of the site follows the menu. */}
+          <a href="/" className="flex items-center gap-3">
             <span
               className={`flex h-11 w-11 items-center justify-center rounded-lg font-display text-xl font-bold transition-colors ${
-                solid ? 'bg-danube-800 text-cream-100' : 'bg-cream-100/15 text-cream-100 backdrop-blur-sm'
+                solid
+                  ? 'bg-danube-800 text-cream-100'
+                  : 'bg-cream-100/15 text-cream-100 backdrop-blur-sm'
               }`}
             >
-              P
+              П
             </span>
             <span className="hidden sm:block">
               <span
@@ -51,14 +57,14 @@ export default function Navigation() {
                   solid ? 'text-danube-900' : 'text-white'
                 }`}
               >
-                Priča
+                Прича
               </span>
               <span
                 className={`block text-[0.65rem] uppercase tracking-[0.2em] transition-colors ${
                   solid ? 'text-sand-600' : 'text-cream-200/80'
                 }`}
               >
-                Novi Banovci
+                Рибљи ресторан
               </span>
             </span>
           </a>

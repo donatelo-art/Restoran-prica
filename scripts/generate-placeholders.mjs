@@ -92,14 +92,6 @@ function buildSvg({ width, height, palette, seed }) {
 }
 
 const assets = [
-  // Menu tiles
-  { file: 'meni-riblja-corba.svg', w: 900, h: 640, palette: 'emberGlow', label: 'Riblja čorba' },
-  { file: 'meni-saran.svg', w: 900, h: 640, palette: 'riverDusk', label: 'Šaran na žaru' },
-  { file: 'meni-som.svg', w: 900, h: 640, palette: 'riverDeep', label: 'Som na žaru' },
-  { file: 'meni-smudj.svg', w: 900, h: 640, palette: 'slateSoft', label: 'Smuđ' },
-  { file: 'meni-lignje.svg', w: 900, h: 640, palette: 'sandStone', label: 'Lignje na žaru' },
-  { file: 'meni-karadjordjeva.svg', w: 900, h: 640, palette: 'emberWarm', label: 'Karađorđeva' },
-
   // About
   { file: 'o-nama-terasa.svg', w: 1200, h: 800, palette: 'riverDusk', label: 'Terasa na Dunavu' },
   { file: 'o-nama-zar.svg', w: 600, h: 600, palette: 'emberWarm', label: 'Žar' },

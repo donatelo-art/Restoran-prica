@@ -79,7 +79,7 @@ export default function Hero() {
               Rezervišite sto
             </a>
             <a
-              href="#meni"
+              href="/meni"
               className="rounded-lg border-2 border-cream-200/60 px-8 py-4 text-lg font-semibold text-cream-100 transition-all duration-300 hover:border-cream-200 hover:bg-white/10 active:scale-95"
             >
               Pogledajte meni

@@ -5,7 +5,7 @@
  *   node scripts/import-photos.mjs
  *
  * Matching is by filename: a file whose name contains a slot key lands in
- * that slot, so `saran-2024-final.jpg` resolves to `meni-saran`. Anything
+ * that slot, so `terasa-2024-final.jpg` resolves to `o-nama-terasa`. Anything
  * unmatched is reported rather than guessed at.
  *
  * Each photo is cropped to the aspect ratio its slot needs and written as
@@ -23,12 +23,6 @@ const outDir = join(root, 'public', 'images')
 
 /** slot -> output dimensions, sized at 2x the largest on-screen render. */
 const slots = {
-  'meni-riblja-corba': { w: 900, h: 600 },
-  'meni-saran': { w: 900, h: 600 },
-  'meni-som': { w: 900, h: 600 },
-  'meni-smudj': { w: 900, h: 600 },
-  'meni-lignje': { w: 900, h: 600 },
-  'meni-karadjordjeva': { w: 900, h: 600 },
   'o-nama-terasa': { w: 1200, h: 800 },
   'o-nama-zar': { w: 600, h: 600 },
   'o-nama-vino': { w: 600, h: 600 },
@@ -40,16 +34,16 @@ const slots = {
   'galerija-vece': { w: 1600, h: 700 },
 }
 
-/** Longest slot key first, so `meni-saran` wins over a hypothetical `saran`. */
+/** Longest slot key first, so a specific key wins over a shorter prefix. */
 const slotKeys = Object.keys(slots).sort((a, b) => b.length - a.length)
 
-/** Also accept the bare subject, e.g. `saran.jpg` for the `meni-saran` slot. */
+/** Also accept the bare subject, e.g. `terasa.jpg` for the `o-nama-terasa` slot. */
 function resolveSlot(filename) {
   const stem = basename(filename, extname(filename)).toLowerCase()
   const direct = slotKeys.find((key) => stem.includes(key))
   if (direct) return direct
   return slotKeys.find((key) => {
-    const subject = key.replace(/^(meni|o-nama|galerija)-/, '')
+    const subject = key.replace(/^(o-nama|galerija)-/, '')
     return stem.includes(subject)
   })
 }

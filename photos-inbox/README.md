@@ -9,16 +9,14 @@ so no component code changes.
 Name files by slot if you can — otherwise just drop them in and say which is
 which, and they'll be matched up.
 
+The menu is set typographically rather than as photo cards — the way fine
+dining menus are normally presented — so there are no per-dish slots. Food
+photography belongs in the gallery instead.
+
 | Slot | Shape | What it should show |
 |---|---|---|
-| `meni-riblja-corba` | landscape ~3:2 | Riblja čorba, bowl |
-| `meni-saran` | landscape ~3:2 | Šaran on the grill or plated |
-| `meni-som` | landscape ~3:2 | Som |
-| `meni-smudj` | landscape ~3:2 | Smuđ |
-| `meni-lignje` | landscape ~3:2 | Lignje na žaru |
-| `meni-karadjordjeva` | landscape ~3:2 | Karađorđeva |
 | `o-nama-terasa` | landscape 3:2 | The terrace / the Danube view — the hero of the About section |
-| `o-nama-zar` | square | The grill, fire, someone cooking |
+| `o-nama-zar` | square | The grill, fire, someone cooking. Also appears beside the menu preview on the home page, so make it a strong one |
 | `o-nama-vino` | square | Wine — Matalj, Deurić, Kovačević bottles or a poured glass |
 | `galerija-obala` | landscape | The riverbank. This is the largest tile in the gallery |
 | `galerija-ulov` | square | The morning catch, fresh fish |

@@ -6,18 +6,19 @@ const linkGroups = [
   {
     title: 'Restoran',
     links: [
-      { label: 'O nama', href: '#o-nama' },
-      { label: 'Meni', href: '#meni' },
-      { label: 'Galerija', href: '#galerija' },
+      { label: 'O nama', href: '/#o-nama' },
+      { label: 'Galerija', href: '/#galerija' },
+      { label: 'Kontakt', href: '/#kontakt' },
     ],
   },
   {
-    title: 'Kuhinja',
+    title: 'Meni',
     links: [
-      { label: 'Rečna riba', href: '#meni' },
-      { label: 'Morski plodovi', href: '#meni' },
-      { label: 'Jela sa žara', href: '#meni' },
-      { label: 'Vinska karta', href: '#meni' },
+      { label: 'Rečna riba', href: '/meni#recna-riba' },
+      { label: 'Morska riba', href: '/meni#morska-riba' },
+      { label: 'Jela od mesa', href: '/meni#jela-od-mesa' },
+      { label: 'Čorbe i supe', href: '/meni#corbe' },
+      { label: 'Vinska karta', href: '/meni' },
     ],
   },
 ]
@@ -36,14 +37,14 @@ export default function Footer() {
           <div className="md:col-span-2">
             <div className="mb-5 flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-lg bg-sand-500 font-display text-xl font-bold text-danube-900">
-                P
+                П
               </span>
               <span>
                 <span className="block font-display text-lg font-semibold leading-tight text-white">
-                  Restoran Priča
+                  Прича
                 </span>
                 <span className="block text-[0.65rem] uppercase tracking-[0.2em] text-sand-300">
-                  Novi Banovci
+                  Рибљи ресторан
                 </span>
               </span>
             </div>
