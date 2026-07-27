@@ -4,62 +4,72 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 
 interface MenuItem {
-  id: number
+  id: string
   name: string
   category: string
   description: string
   image: string
-  price?: string
+  price: string
 }
 
+/**
+ * A cross-section of the kitchen rather than a full menu: one signature soup,
+ * three river fish, one from the sea, one from the grill.
+ */
 const menuItems: MenuItem[] = [
   {
-    id: 1,
-    name: 'Сваље на жару',
-    category: 'Рачна раба',
-    description: 'Свежа шаран из Дунава, печенa на отвореном огњу са лимоном и травама',
-    image: 'https://images.unsplash.com/photo-1547632537-c03588a17d23?w=600&h=400&fit=crop',
-    price: '2,490 дин',
+    id: 'riblja-corba',
+    name: 'Riblja čorba',
+    category: 'Čorbe',
+    description:
+      'Ono po čemu nas pamte. Od tri vrste rečne ribe, krčkana satima, sa domaćom aleva paprikom.',
+    image: '/images/meni-riblja-corba.svg',
+    price: '590 RSD',
   },
   {
-    id: 2,
-    name: 'Сум на жару',
-    category: 'Рачна раба',
-    description: 'Дивља речна раба са деликатним месом, печена са свежим зачинима',
-    image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&h=400&fit=crop',
-    price: '2,890 дин',
+    id: 'saran',
+    name: 'Šaran na žaru',
+    category: 'Rečna riba',
+    description:
+      'Dunavski šaran, cela riba na otvorenoj vatri, sa limunom i domaćim začinskim biljem.',
+    image: '/images/meni-saran.svg',
+    price: '2.490 RSD',
   },
   {
-    id: 3,
-    name: 'Лигње на жару',
-    category: 'Морска раба',
-    description: 'Нежни лигњи из Адријатског мора, печени са белим вином и лимоном',
-    image: 'https://images.unsplash.com/photo-1580959375944-abd7e991f971?w=600&h=400&fit=crop',
-    price: '1,890 дин',
+    id: 'som',
+    name: 'Som na žaru',
+    category: 'Rečna riba',
+    description:
+      'Mesnati fileti soma, blago dimljeni na žaru, uz pečeni krompir i mladi beli luk.',
+    image: '/images/meni-som.svg',
+    price: '2.290 RSD',
   },
   {
-    id: 4,
-    name: 'Карађорђева шницла',
-    category: 'Јела од меса',
-    description: 'Класична, фина пачетина са белимсиром и мајонезом, печена на масти',
-    image: 'https://images.unsplash.com/photo-1508270115619-a25917ba3287?w=600&h=400&fit=crop',
-    price: '1,490 дин',
+    id: 'smudj',
+    name: 'Smuđ u maslinovom ulju',
+    category: 'Rečna riba',
+    description:
+      'Najfiniji filet naše reke — kratko na tiganju, sa maslinovim uljem, belim lukom i peršunom.',
+    image: '/images/meni-smudj.svg',
+    price: '2.890 RSD',
   },
   {
-    id: 5,
-    name: 'Ћевапи са подвараком',
-    category: 'Јела од меса',
-    description: 'Аутентични српски ћевапи, печени на жару, послужени са подвараком',
-    image: 'https://images.unsplash.com/photo-1529042410759-822a6a4ad537?w=600&h=400&fit=crop',
-    price: '1,290 дин',
+    id: 'lignje',
+    name: 'Lignje na žaru',
+    category: 'Morski plodovi',
+    description:
+      'Nežne lignje sa Jadrana, sa žara, uz blitvu na dalmatinski način i krišku limuna.',
+    image: '/images/meni-lignje.svg',
+    price: '1.890 RSD',
   },
   {
-    id: 6,
-    name: 'Рибља чорба Приче',
-    category: 'Чорбе',
-    description: 'Позната чорба од свеже речне рибе са кромпиром, паприком и зачинима',
-    image: 'https://images.unsplash.com/photo-1547521868-14cbbf04dd13?w=600&h=400&fit=crop',
-    price: '490 дин',
+    id: 'karadjordjeva',
+    name: 'Karađorđeva šnicla',
+    category: 'Jela od mesa',
+    description:
+      'Klasik, bez kompromisa. Punjena kajmakom, pohovana do zlatne boje, uz domaći tartar sos.',
+    image: '/images/meni-karadjordjeva.svg',
+    price: '1.590 RSD',
   },
 ]
 
@@ -67,121 +77,100 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
+    transition: { staggerChildren: 0.09, delayChildren: 0.1 },
   },
 }
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 28 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: 'easeOut' },
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
   },
 }
 
 export default function MenuPreview() {
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12 bg-gradient-to-b from-cream-50 to-white">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
+    <section className="bg-gradient-to-b from-cream-50 to-white px-6 py-24 md:px-12 md:py-32">
+      <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mb-16 md:mb-24"
+          viewport={{ once: true, amount: 0.4 }}
+          className="mb-16 text-center md:mb-20"
         >
-          <div className="flex justify-center mb-6">
-            <div className="divider-gold"></div>
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-sand-600">Meni</p>
+          <div className="mb-8 flex justify-center">
+            <div className="divider-gold" />
           </div>
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-display text-danube-900 mb-6">
-            Наша Кухња
+          <h2 className="mb-6 font-display text-4xl text-danube-900 md:text-5xl lg:text-6xl">
+            Sa žara, sa reke
           </h2>
-          <p className="text-lg md:text-xl text-danube-700 max-w-2xl mx-auto">
-            Откријте селекцију наших сигнатурних јела, припремљених са најсвежијим ингредијентима из Дунава и изван.
+          <p className="mx-auto max-w-2xl text-lg text-danube-700 md:text-xl">
+            Kratak izbor iz kuhinje. Puna karta menja se sa sezonom i sa onim što
+            tog jutra stigne sa vode.
           </p>
         </motion.div>
 
-        {/* Menu Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
+          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 md:gap-10"
         >
           {menuItems.map((item) => (
-            <motion.div
+            <motion.article
               key={item.id}
               variants={itemVariants}
-              whileHover={{ y: -10 }}
-              className="group overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300"
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.3 }}
+              className="group overflow-hidden rounded-2xl bg-white shadow-lg transition-shadow duration-300 hover:shadow-2xl"
             >
-              {/* Image Container */}
-              <div className="relative h-64 md:h-72 overflow-hidden bg-danube-100">
+              <div className="relative h-60 overflow-hidden bg-danube-100 md:h-64">
                 <Image
                   src={item.image}
                   alt={item.name}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
 
-              {/* Content */}
-              <div className="p-8 bg-white">
-                {/* Category Tag */}
-                <span className="inline-block text-xs font-semibold text-danube-600 bg-danube-50 px-4 py-2 rounded-full mb-4 uppercase letter-spacing">
+              <div className="p-8">
+                <span className="mb-4 inline-block rounded-full bg-danube-50 px-4 py-1.5 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-danube-600">
                   {item.category}
                 </span>
 
-                {/* Title */}
-                <h3 className="text-2xl font-display text-danube-900 mb-3 group-hover:text-danube-600 transition-colors">
+                <h3 className="mb-3 font-display text-2xl text-danube-900 transition-colors group-hover:text-danube-600">
                   {item.name}
                 </h3>
 
-                {/* Description */}
-                <p className="text-danube-700 text-sm md:text-base mb-6 leading-relaxed">
-                  {item.description}
-                </p>
+                <p className="mb-6 text-base leading-relaxed text-danube-700">{item.description}</p>
 
-                {/* Price */}
-                <div className="flex justify-between items-center">
-                  {item.price && (
-                    <span className="text-lg font-semibold text-sand-600">
-                      {item.price}
-                    </span>
-                  )}
-                  <motion.button
-                    whileHover={{ x: 5 }}
-                    className="text-danube-600 font-semibold text-sm hover:text-danube-700 transition-colors flex items-center gap-2"
-                  >
-                    Детаљи
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </motion.button>
+                <div className="flex items-center justify-between border-t border-cream-600/30 pt-5">
+                  <span className="font-display text-lg text-sand-600">{item.price}</span>
                 </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </motion.div>
 
-        {/* View Full Menu Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
-          className="flex justify-center mt-16 md:mt-24"
+          className="mt-16 flex flex-col items-center gap-4 md:mt-20"
         >
-          <button className="btn-primary text-lg">
-            Видите весе мени
-          </button>
+          <a href="#kontakt" className="btn-primary text-lg">
+            Zatražite celu kartu
+          </a>
+          <p className="text-sm text-danube-600">
+            Za veće grupe i proslave pripremamo poseban meni.
+          </p>
         </motion.div>
       </div>
     </section>

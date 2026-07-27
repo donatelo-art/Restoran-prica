@@ -1,223 +1,76 @@
-# Restoran Priča - Premium Danube River Seafood Restaurant Website
+# Restoran Priča
 
-A stunning, production-ready website for Restoran Priča, a luxury seafood restaurant located on the Danube river in Novi Banovci, Serbia. This website rivals the digital presence of top-tier global seafood restaurants like Le Bernardin, Elkano, and Angler.
+Website for Restoran Priča — a fish and seafood restaurant on the Danube in Novi Banovci, Vojvodina, Serbia. Built with Next.js 14, TypeScript, Tailwind CSS and Framer Motion.
 
-## 🌟 Features
-
-### Design Excellence
-- **Premium Color Palette**: Deep river blues, warm sand tones, crisp creams - inspired by Danube luxury
-- **Sophisticated Typography**: Playfair Display (headlines) + Inter (body) - elegance meets readability
-- **Responsive Design**: Flawless experience from mobile to desktop
-- **Smooth Animations**: Subtle, purposeful motion via Framer Motion
-
-### Website Sections
-- **Hero**: Full-screen impact with animated background elements
-- **About (O Nama)**: Compelling story of tradition, river, and culinary passion
-- **Menu Preview**: Showcase of signature river fish and seafood dishes
-- **Gallery**: Visual storytelling of ambiance and culinary artistry
-- **Reservations**: Premium call-to-action with contact information
-- **Footer**: Complete information architecture and social links
-
-### Content
-- **Fully in Serbian**: Authentic Serbian language (Cyrillic) throughout
-- **Premium Copywriting**: Mouth-watering descriptions of river fish, seafood, and local wines
-- **Cultural Authenticity**: Highlights Danube location, traditional recipes, local wineries
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
+## Running it
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
-npm run dev
+npm run dev     # http://localhost:3000
 ```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
-
-### Build for Production
 
 ```bash
-npm run build
-npm start
+npm run build && npm start   # production
 ```
 
-## 📁 Project Structure
+## ⚠️ Before this goes live
+
+Two things in this repo are placeholders and **must** be replaced:
+
+**1. Contact details — `lib/contact.ts`**
+
+Every value in that file is invented: phone, email, opening hours, capacity, social links. They are all funnelled through one module so there is exactly one place to fix. Publishing a wrong phone number for a real business is worse than publishing none.
+
+**2. Photography — `public/images/`**
+
+The images are generated abstract gradients in the brand palette, not photographs. They exist so the layout renders without depending on an external image host. Replace them with the restaurant's real photography, keeping the same filenames — no code changes needed.
 
 ```
-restoran-prica/
-├── app/
-│   ├── layout.tsx          # Root layout with metadata
-│   ├── page.tsx            # Home page (all sections)
-│   ├── globals.css         # Global styles & Tailwind directives
-├── components/
-│   ├── Navigation.tsx      # Fixed header with logo & menu
-│   ├── Hero.tsx            # Full-screen hero section
-│   ├── About.tsx           # O Nama section with story
-│   ├── MenuPreview.tsx     # Menu showcase (6 items)
-│   ├── Gallery.tsx         # Image gallery with hover effects
-│   ├── Reservations.tsx    # Reservation CTA section
-│   └── Footer.tsx          # Complete footer with links
-├── tailwind.config.ts      # Tailwind configuration with custom colors
-├── tsconfig.json           # TypeScript configuration
-├── next.config.js          # Next.js configuration
-├── package.json            # Dependencies
-├── DESIGN_SYSTEM.md        # Complete design documentation
-└── README.md              # This file
+meni-*.svg        menu cards        (≈3:2, landscape)
+o-nama-terasa.svg about, feature    (3:2, landscape)
+o-nama-*.svg      about, small pair (1:1, square)
+galerija-obala.svg / galerija-vece.svg   gallery, landscape
+galerija-*.svg    gallery tiles     (1:1, square)
 ```
 
-## 🎨 Design System
+Swapping to `.jpg`/`.webp` means updating the `src` strings in `components/MenuPreview.tsx`, `components/About.tsx` and `components/Gallery.tsx`.
 
-### Color Palette
-- **Danube Blue**: #3d8ac9 (primary, trust, premium)
-- **Sand Warm**: #d4a574 (luxury, warmth, accents)
-- **Cream**: #f5e6d3 (elegance, readability)
-- **Dark Background**: #0f2d3c (hero, sophistication)
+Menu prices in `components/MenuPreview.tsx` are also illustrative.
 
-See [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md) for complete design documentation.
+## Structure
 
-### Typography
-- **Display**: Playfair Display (elegant, high-end)
-- **Body**: Inter (clean, modern, readable)
-
-### Responsive Breakpoints
-- Mobile: 0-640px
-- Tablet: 641-1024px
-- Desktop: 1025px+
-
-## 🛠️ Technology Stack
-
-- **Framework**: Next.js 14 (App Router)
-- **React**: 18.2
-- **Styling**: Tailwind CSS 3 with custom theme
-- **Animation**: Framer Motion 10
-- **Language**: TypeScript
-- **Images**: Unsplash (via Next.js Image optimization)
-
-## ✨ Key Components
-
-### Hero Component
-```tsx
-// Full-screen hero with:
-// - Animated background elements
-// - Compelling headline & subheadline
-// - Dual CTA buttons
-// - Scroll indicator
+```
+app/
+  layout.tsx          metadata, fonts, <html lang="sr-Latn">
+  page.tsx            section order and anchor ids
+  globals.css         Tailwind layers, self-hosted fonts, shared classes
+components/
+  Navigation.tsx      fixed header, transparent over the hero
+  Hero.tsx            full-viewport opener
+  About.tsx           story + three feature cards
+  MenuPreview.tsx     six-dish cross-section of the kitchen
+  Gallery.tsx         4-column tiled grid
+  Reservations.tsx    booking call-to-action
+  Footer.tsx
+lib/contact.ts        ← all contact details live here
+scripts/
+  generate-placeholders.mjs   regenerates public/images
 ```
 
-### MenuPreview Component
-```tsx
-// Showcases 6 signature dishes:
-// - Category tags
-// - High-quality images
-// - Descriptions in Serbian
-// - Pricing
-// - Hover effects
-```
+## Design
 
-### Interactive Features
-- Smooth scroll navigation
-- Hover animations on cards and buttons
-- Scroll-trigger reveals
-- Responsive mobile menu
-- Image zoom on hover
+Full rationale in [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md). Short version:
 
-## 📱 Responsive Features
+- **Palette** — deep Danube blues for depth, a warm sand tone for accents and primary calls-to-action, cream for text on dark. Defined in `tailwind.config.ts` as `danube`, `sand`, `cream`.
+- **Type** — Playfair Display for headings, Inter for everything else. Both self-hosted via `@fontsource`, `latin-ext` subsets, so the Serbian diacritics (č, ć, š, ž, đ) render and there is no third-party request on load.
+- **Motion** — Framer Motion, transform/opacity only. Sections reveal once on scroll with a short stagger; nothing loops except the ambient hero glow.
 
-- Mobile-first approach
-- Flexible grid layouts
-- Touch-friendly buttons and spacing
-- Optimized typography scaling
-- Hamburger menu for mobile navigation
+## Language
 
-## 🌐 SEO & Metadata
+The site is in Serbian, Latin script — the norm for hospitality in Vojvodina and readable to both locals and visitors. `lang="sr-Latn"`.
 
-- Server-side metadata in layout
-- Open Graph tags for social sharing
-- Semantic HTML structure
-- Optimized images with alt text
-- Locale: sr_RS (Serbian)
+## Notes
 
-## 📝 Serbian Copywriting Highlights
-
-### Hero Section
-- **Headline**: "Priča Danube"
-- **Subheadline**: "Где се река среща са кулинарском страшћу..."
-- **Description**: Sensory experience of Danube dining
-
-### About Section
-- **Title**: "О нама"
-- **Story**: History of tradition, river connection, culinary passion
-- **Features**: Fresh fish, premium wines, open kitchen
-
-### Menu Section
-- **Signature Dishes**: Šaran, Som, Smuđ, Pastrmka, Lignje
-- **Categories**: River fish, Seafood, Meat dishes, Soups
-- **Descriptions**: Evocative, sensory language
-
-### Reservations
-- **CTA**: "Резервишите вашу вечер"
-- **Contact**: Phone + Email
-- **Hours & Info**: Location, capacity, reservation policy
-
-## 🎯 Design Principles
-
-1. **Elegance Over Complexity**: Clean, spacious design
-2. **Authenticity**: Local language, culture, pride
-3. **Premium Feel**: Luxury without being ostentatious
-4. **Performance**: Smooth animations, optimized images
-5. **Accessibility**: Clear hierarchy, readable text, semantic HTML
-6. **Responsiveness**: Works perfectly on all devices
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-```bash
-npm install -g vercel
-vercel
-```
-
-### Other Platforms
-- Netlify
-- AWS Amplify
-- GitHub Pages + Build Action
-- Traditional hosting with Node.js support
-
-## 📊 Performance Optimizations
-
-- Next.js Image optimization
-- CSS Grid/Flexbox (no heavy layouts)
-- GPU-accelerated animations (transform, opacity)
-- Lazy loading of below-fold content
-- Minimal JavaScript bundle
-- Font loading optimization
-
-## 🎓 Learning Resources
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [Tailwind CSS](https://tailwindcss.com)
-- [Framer Motion](https://www.framer.com/motion/)
-- [React Documentation](https://react.dev)
-
-## 📄 License
-
-Created for Restoran Priča © 2024-2025
-
-## 👨‍💼 Credits
-
-**Design & Development**: World-class UI/UX Designer, Master Copywriter, Expert Full-Stack Developer
-- Specializing in Next.js, React, and Tailwind CSS
-- Premium, high-end restaurant websites
-- Serbian language & culture expertise
-
----
-
-**Built with ❤️ for Restoran Priča on the Danube River**
-
-*Experience luxury. Feel the breeze. Taste the tradition.*
+- Fully static: every route prerenders, no server runtime needed.
+- Deploys as-is to Vercel, Netlify, or any static host.
+- No analytics, cookies, or third-party requests are wired up. If you add them, the site currently sets no cookies, which is worth keeping in mind for the consent banner you'd otherwise need.

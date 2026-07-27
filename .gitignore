@@ -16,3 +16,6 @@ yarn-error.log*
 *.swo
 *~
 .vscode/
+
+# Screenshot scratch scripts
+.shoot*.mjs

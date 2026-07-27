@@ -8,30 +8,28 @@ import Footer from '@/components/Footer'
 
 export default function Home() {
   return (
-    <main className="w-full">
+    <>
       <Navigation />
-
-      <section id="hero">
+      <main>
         <Hero />
-      </section>
 
-      <section id="about">
-        <About />
-      </section>
+        <section id="o-nama" className="scroll-mt-24">
+          <About />
+        </section>
 
-      <section id="menu">
-        <MenuPreview />
-      </section>
+        <section id="meni" className="scroll-mt-24">
+          <MenuPreview />
+        </section>
 
-      <section id="gallery">
-        <Gallery />
-      </section>
+        <section id="galerija" className="scroll-mt-24">
+          <Gallery />
+        </section>
 
-      <section id="contact">
-        <Reservations />
-      </section>
-
+        <section id="kontakt" className="scroll-mt-24">
+          <Reservations />
+        </section>
+      </main>
       <Footer />
-    </main>
+    </>
   )
 }
