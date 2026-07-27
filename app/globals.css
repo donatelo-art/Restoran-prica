@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-white text-danube-900 font-sans;
+  font-feature-settings: 'kern' 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-display font-semibold;
+}
+
+h1 {
+  @apply text-5xl md:text-7xl lg:text-8xl leading-tight;
+}
+
+h2 {
+  @apply text-4xl md:text-5xl lg:text-6xl leading-tight;
+}
+
+h3 {
+  @apply text-2xl md:text-3xl lg:text-4xl leading-snug;
+}
+
+p {
+  @apply leading-relaxed text-base md:text-lg;
+  font-weight: 400;
+}
+
+/* Premium button styling */
+.btn-primary {
+  @apply px-8 py-4 bg-danube-500 text-white font-semibold rounded-lg transition-all duration-300 hover:bg-danube-600 hover:shadow-lg active:scale-95;
+}
+
+.btn-secondary {
+  @apply px-8 py-4 border-2 border-danube-500 text-danube-500 font-semibold rounded-lg transition-all duration-300 hover:bg-danube-50 hover:shadow-md active:scale-95;
+}
+
+.btn-ghost {
+  @apply px-8 py-4 text-danube-600 font-semibold transition-all duration-300 hover:text-danube-700 hover:translate-x-1;
+}
+
+/* Image loading effect */
+.image-fade {
+  @apply transition-opacity duration-500;
+}
+
+/* Scroll reveal animations */
+@keyframes scrollReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  animation: scrollReveal 0.8s ease-out;
+}
+
+/* Glassmorphism effect */
+.glass {
+  @apply bg-white/10 backdrop-blur-md border border-white/20;
+}
+
+/* Premium divider */
+.divider-gold {
+  @apply h-1 w-16 bg-gradient-to-r from-sand-300 via-sand-500 to-sand-300 rounded-full;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cream-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-sand-400 rounded-full hover:bg-sand-500;
+}
